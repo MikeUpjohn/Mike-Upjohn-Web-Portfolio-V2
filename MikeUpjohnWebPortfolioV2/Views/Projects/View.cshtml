@@ -1,0 +1,34 @@
+﻿@model MikeUpjohnWebPortfolioV2.Models.ProjectsListViewModel
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area large-padding">
+                <img src="@Model.ProjectImage" alt="@Model.ProjectTitle" class="details-image">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding purple-area">
+            <div class="content-area">
+                <h1>@Model.ProjectTitle</h1>
+                <h3>@(Model.ProjectDateDescription)</h3>
+                @Html.Raw(Model.ProjectDescription)
+
+                @if (Model.ProjectLink != null)
+                {
+                    <a class="view-details" href="@Model.ProjectLink">View the Project</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            @Html.Action("_Footer", "Shared")
+        </div>
+    </div>
+</div>

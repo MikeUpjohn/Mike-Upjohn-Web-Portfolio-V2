@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 row-no-padding">
+            <div class="banner-container">
+                <div class="banner-content">
+                    <h1>Mike Upjohn</h1>
+                    <h2>.NET Web Developer<br />and Meteorologist</h2>
+                </div>
+            </div>
+            <div class="banner-image"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area">
+                <h3 class="white-title"><span>Thank you for your enquiry!</span></h3>
+                <p>Your enquiry has been sent, and you can expect to hear back via e-mail from your request in 3 - 5 working days. Thanks for your enquiry!</p>
+                <p>While you're here, why not check out some of my <a href="@Url.Action("Index","Blog")">latest blogs</a> or some of my <a href="@Url.Action("Index","Project")">latest projects</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            @Html.Action("_Footer", "Shared")
+        </div>
+    </div>
+</div>

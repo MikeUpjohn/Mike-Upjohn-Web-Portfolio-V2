@@ -1,0 +1,18 @@
+﻿@model MikeUpjohnWebPortfolioV2.Models.ProjectsListViewModel
+<div class="latest-project">
+    <h3 class="purple-title"><span>Latest Project</span></h3>
+    <div class="row-no-padding">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-md-push-7 col-lg-push-7 item-no-padding">
+            <div class="project-image">
+                <img class="desktop-image" src="@Url.Content(Model.ProjectImage)" alt="@Model.ProjectTitle" />
+                <img class="mobile-image" src="@Url.Content(Model.ProjectImage)" alt="@Model.ProjectTitle" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-pull-5 col-lg-pull-5 item-no-padding">
+            <h4>@Model.ProjectTitle</h4>
+            <h5 class="item-date right">@Model.ProjectDateDescription</h5>
+            @Html.Raw(Model.ProjectSummary)
+            <a class="view-details" href="@Url.Content(Model.DetailsLink)">View More About This Project</a>
+        </div>
+    </div>
+</div>

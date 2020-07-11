@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 row-no-padding">
+            <div class="banner-container">
+                <div class="banner-content">
+                    <h1>Mike Upjohn</h1>
+                    <h2>.NET Web Developer<br />and Meteorologist</h2>
+                </div>
+            </div>
+            <div class="banner-image"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area">
+                <h3 class="white-title"><span>Ways To Get In Touch</span></h3>
+                <ul class="contact-options">
+                    <li><b>General Enquiries: </b><a href="mailto:hello@mike-upjohn.co.uk">hello@mike.upjohn.co.uk</a></li>
+                    <li><b>Need a Developer?: </b><a href="mailto:development@mike-upjohn.co.uk">development@mike.upjohn.co.uk</a></li>
+                    <li><b>LinkedIn: </b><a href="http://www.linkedin.com/">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding purple-area">
+            <div id="map"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding purple-area">
+            <div class="content-area">
+                @Html.Action("_ContactForm","Shared")
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <footer>
+                <div class="left-footer">&copy; Michael Upjohn 2015</div>
+                <div class="right-footer">
+                    <!-- Projects &#8226; Blogs &#8226; Contact Me -->
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#">Projects</a>
+                        </li>
+                        <li>
+                            <a href="#">Blogs</a>
+                        </li>
+                        <li class="last">
+                            <a href="#">Contact Me</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model MikeUpjohnWebPortfolioV2.Models.ContactForm
+
+<div class="contact-me">
+    <h3 class="purple-title"><span>Contact Me</span></h3>
+    <div class="row-no-padding">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>Donec ut augue nec ante sodales aliquam sed eget mauris. Proin ut massa pulvinar, malesuada nunc eu, auctor metus. Nullam magna purus, cursus eu laoreet quis, cursus vitae lacus. Duis iaculis rutrum ex non sodales. Sed vitae nunc ac nibh commodo fringilla.</p>
+        </div>
+    </div>
+    <div class="row-no-padding">
+        @using (Html.BeginForm("_ContactForm", "Shared", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-component">
+                    <div class="row">
+                        <div class="col-xs-12 item-no-padding">
+                            <label>Your Name: </label>
+                            <span class="validation-asterisk">*</span>
+                        </div>
+                        <div class="col-xs-12 item-no-padding">
+                            @*<input type="text" placeholder="Your Name" />*@
+                            @Html.TextBoxFor(m => m.Name, new { @placeholder = "Your Name" })
+                            @Html.ValidationMessageFor(m=>m.Name)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-component">
+                    <div class="row">
+                        <div class="col-xs-12 item-no-padding">
+                            <label>Your Email Address: </label>
+                            <span class="validation-asterisk">*</span>
+                        </div>
+                        <div class="col-xs-12 item-no-padding">
+                            @*<input type="text" placeholder="Your Email Address" />*@
+                            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Your Email Address" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-component">
+                    <div class="row">
+                        <div class="col-xs-12 item-no-padding">
+                            <label>What's your enquiry about?: </label>
+                            <span class="validation-asterisk">*</span>
+                        </div>
+                        <div class="col-xs-12 item-no-padding">
+                            @Html.DropDownListFor(m => m.SelectedEnquiryOption, Model.EnquiryOptions)
+                            @Html.ValidationMessageFor(m => m.SelectedEnquiryOption)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="form-component">
+                    <div class="row">
+                        <div class="col-xs-12 item-no-padding">
+                            <label>Your Message: </label>
+                            <span class="validation-asterisk">*</span>
+                        </div>
+                        <div class="col-xs-12 item-no-padding">
+                            @*<textarea placeholder="Your Message"></textarea>*@
+                            @Html.TextAreaFor(m => m.Message, new { @placeholder = "Your Message" })
+                            @Html.ValidationMessageFor(m => m.Message)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-component">
+                    <div class="row">
+                        <div class="col-xs-12 item-no-padding">
+                            <input type="submit" value="Send Your Message">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

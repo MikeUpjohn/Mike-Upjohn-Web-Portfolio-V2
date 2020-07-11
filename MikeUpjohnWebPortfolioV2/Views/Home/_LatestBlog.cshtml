@@ -1,0 +1,18 @@
+﻿@model MikeUpjohnWebPortfolioV2.Models.BlogsListViewModel
+<div class="latest-blog">
+    <h3 class="white-title"><span>Latest Blog</span></h3>
+    <div class="row-no-padding">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 item-no-padding">
+            <div class="blog-image">
+                <img class="desktop-image" src="@Url.Content(Model.BlogImage)" alt="@Model.BlogTitle" />
+                <img class="mobile-image" src="@Url.Content(Model.BlogImage)" alt="@Model.BlogTitle" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 item-no-padding">
+            <h4>@Model.BlogTitle</h4>
+            <h5 class="item-date right">@MikeUpjohnWebPortfolioV2.Code.UsefulFunctions.FormatDateToShortDateString(Model.BlogDate)</h5>
+            @Html.Raw(Model.BlogSummary)
+            <a class="view-details" href="@Url.Content(Model.DetailsLink)">Read More</a>
+        </div>
+    </div>
+</div>

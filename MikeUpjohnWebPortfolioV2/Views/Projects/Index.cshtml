@@ -1,0 +1,73 @@
+﻿@model List<MikeUpjohnWebPortfolioV2.Models.ProjectsListViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 row-no-padding">
+            <div class="banner-container">
+                <div class="banner-content">
+                    <h1>Mike Upjohn</h1>
+                    <h2>.NET Web Developer<br />and Meteorologist</h2>
+                </div>
+            </div>
+            <div class="banner-image"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area">
+                <h3 class="white-title"><span>Lorem Ipsum Dolor Sit Amet</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla lorem at lacinia maximus. Morbi volutpat sagittis diam sit amet tempor. In et faucibus massa. Morbi id congue enim. Aliquam ac efficitur massa, eget dapibus mi. Proin vel tellus libero. Sed suscipit bibendum commodo. Integer iaculis nunc vitae lobortis egestas. Fusce venenatis mauris nec metus auctor laoreet. Donec tincidunt tincidunt sapien sit amet rhoncus. Nam porttitor non enim ac fringilla. Nulla sed tristique odio. Proin eu nunc vel lacus fermentum sodales.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding purple-area">
+            <div class="content-area">
+                <h3 class="purple-title"><span>Latest Projects</span></h3>
+            </div>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-xs-12 row-no-padding @(Model.IndexOf(item) % 2 == 0 ? "purple" : "white" )-area">
+                <div class="content-area">
+                    <div class="project-item @(Model.IndexOf(item) % 2 == 0 ? "right" : "") @(Model.IndexOf(item) == 0 ? "latest": "")">
+                        <div class="row-no-padding">
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 @(Model.IndexOf(item) % 2 == 0 ? "col-md-push-7 col-lg-push-7" : "")  item-no-padding">
+                                <div class="project-image">
+                                    @if (!string.IsNullOrEmpty(item.ProjectImage))
+                                    {
+                                        <img class="desktop-image" src="@Url.Content(item.ProjectImage)" alt="@item.ProjectTitle" />
+                                        <img class="mobile-image" src="@Url.Content(item.ProjectImage)" alt="@item.ProjectTitle" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 @(Model.IndexOf(item) % 2 == 0 ? "col-md-pull-5 col-lg-pull-5" : "") item-no-padding">
+                                <h4>@item.ProjectTitle</h4>
+                                <h5 class="item-date">@item.ProjectDateDescription</h5>
+                                @Html.Raw(item.ProjectSummary)
+                                <a class="view-details" href="@Url.Content(item.DetailsLink)">View More About This Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area">
+                @Html.Action("_Pagination", "Shared", new { currentPage = ViewBag.CurrentPage, countOfItems = ViewBag.CountOfItems })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            @Html.Action("_Footer", "Shared")
+        </div>
+    </div>
+</div>

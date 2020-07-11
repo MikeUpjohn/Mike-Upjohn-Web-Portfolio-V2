@@ -1,0 +1,29 @@
+﻿@model MikeUpjohnWebPortfolioV2.Models.BlogsListViewModel
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area large-padding">
+                <img src="~/_includes/img/project-banner-image.jpg" alt="@Model.BlogTitle" class="details-image">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding purple-area">
+            <div class="content-area">
+                <h1>@Model.BlogTitle</h1>
+                <h3>@MikeUpjohnWebPortfolioV2.Code.UsefulFunctions.FormatDateToLongDateString(Model.BlogDate) by @Model.BlogAuthor</h3>
+                @Html.Raw(Model.BlogPost)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            @Html.Action("_Footer", "Shared")
+        </div>
+    </div>
+</div>

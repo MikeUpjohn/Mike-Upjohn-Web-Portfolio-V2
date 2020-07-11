@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 row-no-padding">
+            <div class="banner-container">
+                <div class="banner-content">
+                    <h1>Mike Upjohn</h1>
+                    <h2>.NET Web Developer<br />and Meteorologist</h2>
+                </div>
+            </div>
+            <div class="banner-image"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="content-area">
+                <h3 class="white-title"><span>Lorem Ipsum Dolor Sit Amet</span></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla lorem at lacinia maximus. Morbi volutpat sagittis diam sit amet tempor. In et faucibus massa. Morbi id congue enim. Aliquam ac efficitur massa, eget dapibus mi. Proin vel tellus libero. Sed suscipit bibendum commodo. Integer iaculis nunc vitae lobortis egestas. Fusce venenatis mauris nec metus auctor laoreet. Donec tincidunt tincidunt sapien sit amet rhoncus. Nam porttitor non enim ac fringilla. Nulla sed tristique odio. Proin eu nunc vel lacus fermentum sodales.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding purple-area">
+            <div class="content-area">
+                <h3 class="purple-title"><span>My Skills</span></h3>
+                <h4>Web Development Experience</h4>
+                <ul>
+                    <li>
+                        This is a bullet point.
+                        <ul>
+                            <li>This is a bullet point.</li>
+                            <li>This is a bullet point.</li>
+                            <li>This is a bullet point.</li>
+                            <li>This is a bullet point.</li>
+                        </ul>
+                    </li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                </ul>
+                <h4>General IT Experience</h4>
+                <ul>
+                    <li>
+                        This is a bullet point.
+                        <ul>
+                            <li>This is a bullet point.</li>
+                            <li>This is a bullet point.</li>
+                            <li>This is a bullet point.</li>
+                            <li>This is a bullet point.</li>
+                        </ul>
+                    </li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                </ul>
+                <h4>Other Experience</h4>
+                <ul class="last-list">
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                    <li>This is a bullet point.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            <div class="work-together-cta">
+                <h3>Interested in Working Together?</h3>
+                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+                <a href="@Url.Action("Index","Contact")" class="view-details">Send a Message Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 row-no-padding white-area">
+            @Html.Action("_Footer", "Shared")
+        </div>
+    </div>
+</div>

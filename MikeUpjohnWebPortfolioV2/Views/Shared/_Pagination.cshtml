@@ -1,0 +1,27 @@
+﻿@{
+    var firstPage = (ViewBag.CurrentPage - MikeUpjohnWebPortfolioV2.Code.Settings.PAGINATIONOFFSETITEMCOUNT) < 1 ? 1 : (ViewBag.CurrentPage - MikeUpjohnWebPortfolioV2.Code.Settings.PAGINATIONOFFSETITEMCOUNT);
+    var lastPage = ViewBag.MaximumPage < (ViewBag.CurrentPage + MikeUpjohnWebPortfolioV2.Code.Settings.PAGINATIONOFFSETITEMCOUNT) ? ViewBag.MaximumPage : (ViewBag.CurrentPage + MikeUpjohnWebPortfolioV2.Code.Settings.PAGINATIONOFFSETITEMCOUNT);
+}
+<div class="pagination">
+    <ul>
+        @if (ViewBag.CurrentPage != 1)
+        {
+            <li class="prev">
+                <a href="@(ViewBag.CurrentPageURL)page-@(ViewBag.CurrentPage - 1)">&lt;&lt;</a>
+            </li>
+        }
+        @for (var i = firstPage; i <= lastPage; i++)
+        {
+            <li>
+                <a href="@(ViewBag.CurrentPageURL)page-@i/">@i</a>
+            </li>
+        }
+
+        @if (ViewBag.CurrentPage < lastPage)
+        {
+            <li class="next">
+                <a href="@(ViewBag.CurrentPageURL)page-@(ViewBag.CurrentPage + 1)">&gt;&gt;</a>
+            </li>
+        }
+    </ul>
+</div>

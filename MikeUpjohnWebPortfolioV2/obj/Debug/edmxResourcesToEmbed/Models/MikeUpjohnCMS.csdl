@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MikeUpjohnCMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MikeUpjohnCMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="MikeUpjohnCMSModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="MikeUpjohnCMSModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="MikeUpjohnCMSModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="MikeUpjohnCMSModel.AspNetUser" />
+    <EntitySet Name="Blogs" EntityType="MikeUpjohnCMSModel.Blog" />
+    <EntitySet Name="Images" EntityType="MikeUpjohnCMSModel.Image" />
+    <EntitySet Name="Projects" EntityType="MikeUpjohnCMSModel.Project" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="MikeUpjohnCMSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="MikeUpjohnCMSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_AspNetUsers" Association="MikeUpjohnCMSModel.FK_Blog_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Blog" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_AspNetUsers" Association="MikeUpjohnCMSModel.FK_Image_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_AspNetUsers" Association="MikeUpjohnCMSModel.FK_Project_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="MikeUpjohnCMSModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_Image" Association="MikeUpjohnCMSModel.FK_Blog_Image">
+      <End Role="Image" EntitySet="Images" />
+      <End Role="Blog" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_Image1" Association="MikeUpjohnCMSModel.FK_Blog_Image1">
+      <End Role="Image" EntitySet="Images" />
+      <End Role="Blog" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Image" Association="MikeUpjohnCMSModel.FK_Project_Image">
+      <End Role="Image" EntitySet="Images" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Image1" Association="MikeUpjohnCMSModel.FK_Project_Image1">
+      <End Role="Image" EntitySet="Images" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="MikeUpjohnCMSModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="MikeUpjohnCMSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="MikeUpjohnCMSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="MikeUpjohnCMSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="MikeUpjohnCMSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Blogs" Relationship="MikeUpjohnCMSModel.FK_Blog_AspNetUsers" FromRole="AspNetUser" ToRole="Blog" />
+    <NavigationProperty Name="Images" Relationship="MikeUpjohnCMSModel.FK_Image_AspNetUsers" FromRole="AspNetUser" ToRole="Image" />
+    <NavigationProperty Name="Projects" Relationship="MikeUpjohnCMSModel.FK_Project_AspNetUsers" FromRole="AspNetUser" ToRole="Project" />
+    <NavigationProperty Name="AspNetRoles" Relationship="MikeUpjohnCMSModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="BlogID" />
+    </Key>
+    <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlogTitle" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BlogAuthor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BlogDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BlogSummary" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogPost" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogImageID" Type="Int32" />
+    <Property Name="BlogThumbnailImageID" Type="Int32" />
+    <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="BlogCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AspNetUser" Relationship="MikeUpjohnCMSModel.FK_Blog_AspNetUsers" FromRole="Blog" ToRole="AspNetUser" />
+    <NavigationProperty Name="Image" Relationship="MikeUpjohnCMSModel.FK_Blog_Image" FromRole="Blog" ToRole="Image" />
+    <NavigationProperty Name="Image1" Relationship="MikeUpjohnCMSModel.FK_Blog_Image1" FromRole="Blog" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageFile" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ImageFileName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImageCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AspNetUser" Relationship="MikeUpjohnCMSModel.FK_Image_AspNetUsers" FromRole="Image" ToRole="AspNetUser" />
+    <NavigationProperty Name="Blogs" Relationship="MikeUpjohnCMSModel.FK_Blog_Image" FromRole="Image" ToRole="Blog" />
+    <NavigationProperty Name="Blogs1" Relationship="MikeUpjohnCMSModel.FK_Blog_Image1" FromRole="Image" ToRole="Blog" />
+    <NavigationProperty Name="Projects" Relationship="MikeUpjohnCMSModel.FK_Project_Image" FromRole="Image" ToRole="Project" />
+    <NavigationProperty Name="Projects1" Relationship="MikeUpjohnCMSModel.FK_Project_Image1" FromRole="Image" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectTitle" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectDateDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectPostDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProjectSummary" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectLink" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="ProjectCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AspNetUser" Relationship="MikeUpjohnCMSModel.FK_Project_AspNetUsers" FromRole="Project" ToRole="AspNetUser" />
+    <Property Name="ProjectImageID" Type="Int32" />
+    <Property Name="ProjectThumbnailImageID" Type="Int32" />
+    <NavigationProperty Name="Image" Relationship="MikeUpjohnCMSModel.FK_Project_Image" FromRole="Project" ToRole="Image" />
+    <NavigationProperty Name="Image1" Relationship="MikeUpjohnCMSModel.FK_Project_Image1" FromRole="Project" ToRole="Image" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="MikeUpjohnCMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MikeUpjohnCMSModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="MikeUpjohnCMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MikeUpjohnCMSModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_AspNetUsers">
+    <End Type="MikeUpjohnCMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="MikeUpjohnCMSModel.Blog" Role="Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="ModifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_AspNetUsers">
+    <End Type="MikeUpjohnCMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="MikeUpjohnCMSModel.Image" Role="Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="ModifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_AspNetUsers">
+    <End Type="MikeUpjohnCMSModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="MikeUpjohnCMSModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ModifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="MikeUpjohnCMSModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="MikeUpjohnCMSModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Blog_Image">
+    <End Type="MikeUpjohnCMSModel.Image" Role="Image" Multiplicity="0..1" />
+    <End Type="MikeUpjohnCMSModel.Blog" Role="Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="BlogImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_Image1">
+    <End Type="MikeUpjohnCMSModel.Image" Role="Image" Multiplicity="0..1" />
+    <End Type="MikeUpjohnCMSModel.Blog" Role="Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="BlogThumbnailImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Image">
+    <End Type="MikeUpjohnCMSModel.Image" Role="Image" Multiplicity="0..1" />
+    <End Type="MikeUpjohnCMSModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Image1">
+    <End Type="MikeUpjohnCMSModel.Image" Role="Image" Multiplicity="0..1" />
+    <End Type="MikeUpjohnCMSModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectThumbnailImageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
